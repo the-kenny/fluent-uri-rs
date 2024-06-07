@@ -153,7 +153,7 @@ impl<E: Encoder> EStr<E> {
     /// # Panics
     ///
     /// Panics at compile time if `E` is not a [sub-encoder](Encoder#sub-encoders) of `SuperE`.
-    #[cfg(fluent_uri_unstable)]
+    #[cfg(feature = "unstable")]
     #[must_use]
     pub fn upcast<SuperE: Encoder>(&self) -> &EStr<SuperE> {
         let () = Assert::<E, SuperE>::LEFT_IS_SUB_ENCODER_OF_RIGHT;
@@ -402,7 +402,7 @@ impl EStr<Path> {
     /// assert!(uri.path().segments().eq(["path", "to", "", "dir", ""]));
     /// # Ok::<_, fluent_uri::error::ParseError>(())
     /// ```
-    #[cfg(fluent_uri_unstable)]
+    #[cfg(feature = "unstable")]
     #[inline]
     pub fn segments(&self) -> Split<'_, Path> {
         let path_stripped = self.inner.strip_prefix('/').unwrap_or(&self.inner);

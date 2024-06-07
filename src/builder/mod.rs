@@ -373,7 +373,7 @@ impl<S: To<PortEnd>> Builder<S> {
     /// Sets the [port] subcomponent of authority, omitting it when it equals the default value.
     ///
     /// [port]: https://datatracker.ietf.org/doc/html/rfc3986/#section-3.2.3
-    #[cfg(fluent_uri_unstable)]
+    #[cfg(feature = "unstable")]
     pub fn port_with_default(self, port: u16, default: u16) -> Builder<PortEnd> {
         self.optional(Builder::port, Some(port).filter(|&port| port != default))
     }

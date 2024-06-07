@@ -15,6 +15,7 @@ categories = ["encoding", "parser-implementations"]
 default = ["net", "std"]
 net = []
 std = []
+unstable = []
 
 [dependencies]
 borrow-or-share = "0.2"
@@ -24,7 +25,3 @@ ref-cast = "1.0"
 targets = ["x86_64-unknown-linux-gnu"]
 rustdoc-args = ["--cfg", "docsrs"]
 
-[lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = [
-    'cfg(fluent_uri_unstable, fuzzing)',
-] }
